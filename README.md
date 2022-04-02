@@ -9,7 +9,7 @@ The motivation for this project was to make a small and portable drum-pad which 
 I am glad to inform that all of these criteria is satisfied by the current project, with some minor drawbacks here and there.
 
 
-# Demo available in YouTube: https://youtu.be/JEltvYWzZDU
+# Demo available on YouTube: https://youtu.be/JEltvYWzZDU
 
 
 # Schematic/ Build details:
