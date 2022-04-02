@@ -12,7 +12,7 @@ I am glad to inform that all of these criteria is satisfied by the current proje
 # Demo available on YouTube: https://youtu.be/JEltvYWzZDU
 
 
-# Schematic/ Build details:
+# Build details:
 
 The schematic for the project is attached in the project-file area, as: RPI_Pico_8xDrum_Pad_Schematic.png.
 The brains of this project is the Raspberry-Pi Pico (RP2040 uC), and the drum-pads are 1-inch piezoelectric disks (which are generally used as buzzers).
