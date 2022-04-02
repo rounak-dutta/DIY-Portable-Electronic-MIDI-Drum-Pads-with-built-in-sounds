@@ -64,7 +64,7 @@ If an SD-Card module is added (as an upgrade), larger samples may be used. But f
 Also, if any other sample-rate than 16KHz is used (max 22KHz), please edit the same in the "sample_rate=16000," portion of the code.py file.
 
 
-# Notes on the CircuitPython Version and Libraries and the Code:
+# Notes on the CircuitPython Version and Libraries:
 
 Please use the same version of CircuitPython .uf2 file and the libs, e.g., 7.x.x or 6.x.x. If the version of .uf2 and the libraries are mixed, the code does not work.
 The CircuitPython libraries required is present in the "lib" folder of this repository ( which are of version 7.x.x). If any other version of .uf2 file is used, the equivalent libs need to be used. 
