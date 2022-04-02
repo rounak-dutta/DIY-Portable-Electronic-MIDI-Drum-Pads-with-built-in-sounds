@@ -1,3 +1,7 @@
+## Code for DIY-Portable-Electronic-MIDI-Drum-Pads-with-built-in-sounds ##
+## by Rounak Dutta ##
+## Huge Thanks to Adafruit industries for CircuitPython ##
+## and the libraries for USB-MIDI and WAV audio playback. ##
 import board
 import digitalio
 import analogio
