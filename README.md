@@ -67,7 +67,8 @@ Also, if any other sample-rate than 16KHz is used (max 22KHz), please edit the s
 # Notes on the CircuitPython Version and Libraries:
 
 Please use the same version of CircuitPython .uf2 file and the libs, e.g., 7.x.x or 6.x.x. If the version of .uf2 and the libraries are mixed, the code does not work.
-The CircuitPython libraries required is present in the "lib" folder of this repository ( which are of version 7.x.x). If any other version of .uf2 file is used, the equivalent libs need to be used. 
+The CircuitPython libraries required is present in the "lib.zip" file of this repository (which are of version 7.x.x, and needs to be unzipped before use). If any other version of .uf2 file is used, the equivalent libs need to be used. 
+
 CircuitPython UF2 file Download: https://circuitpython.org/board/raspberry_pi_pico/
 CircuitPython Library Download: https://circuitpython.org/libraries
 
