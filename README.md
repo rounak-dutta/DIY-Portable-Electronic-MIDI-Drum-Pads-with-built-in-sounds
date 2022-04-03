@@ -5,9 +5,10 @@ DIY portable velocity-sensitive electronic Drum-pad for finger drumming
 # Project Description:
 
 In this repository, I am sharing the code, schematic and general build and usage guidelines for a portable velocity-sensitive electronic Drum-pad for finger-drumming, which can play drum (or technically any audio) samples loaded by the user and also act as usb-midi input device.
+
 The drum-pad is powered by Raspberry-Pi Pico and CircuitPython. Huge Thanks to Adafruit industries for CircuitPython and the libraries for USB-MIDI and WAV audio playback.
-The motivation for this project was to make a small and portable drum-pad which would have in-built sounds and battery power for trying out ideas at any place, and MIDI capability for when I want to work with my DAW.
-I am glad to inform that all of these criteria is satisfied by the current project, with some minor drawbacks here and there.
+
+The motivation for this project was to make a small and portable drum-pad which would have in-built sounds and battery power for trying out ideas at any place, and MIDI capability for when I want to work with my DAW. I am glad to inform that all of these criteria is satisfied by the current project, with some minor drawbacks here and there.
 
 
 # Demo available on YouTube: https://youtu.be/JEltvYWzZDU
@@ -17,7 +18,7 @@ I am glad to inform that all of these criteria is satisfied by the current proje
 1. 	When I am using battery power, I can hear a high-pitched whine/ noise in the headphones (when nothing is playing). Which is most-likely some kind of switching noise from the RPI-Pico's power management IC. My hypothesis is that battery voltage is ~3.7V, and 1N4007 drop is ~0.7, so ~3.0V is arriving at the Vsys of the PICO and the power management IC is boosting the voltage to 3.3V, and thus introducing the switching noise in the process. This issue maybe reolved by using a Schottky diode instead of the 1n4007 which I am currently using. Even with the above mentioned issue (which is not present when using USB power), the drum-pad is usable as the whine is generally drowned by the drum sample playback, but many people may find it annoying and the noise can cause issues with PAs in live scenarios.
 The solution for now is to stick to USB power, or try using a schottky diode in place of the 1N4007.
 
-2. 	During my testing, although I could definitely hear the difference between a hard and soft strike on the drum-pads, the consistency (and the range) of the velocity sensitivity is not even close to the professional grade equipments. Please consider the same before investing time in this project. Possible solutions can be: improvement in the algorithm, better setting of the thresholds and one can also try removing the 10nF capacitors in parallel with the 1meg resistors and 3.3v zener diodes.  
+2. 	During my testing, although I could definitely hear the difference (in volume) between hard and soft strikes on the drum-pads, the consistency of the velocity sensitivity may not be comparable to professional grade equipments. Please consider the same before investing time in this project, as commercially available products will be better suited for professional use. Possible future improvemnts can be: improvement in the algorithm (\*already updated once for better velocity range, after the YouTube demo was published), fine tuning of the min/max thresholds and one can also try removing the 10nF capacitors in parallel with the 1meg resistors and 3.3v zener diodes.  
 
 
 # Build details:
@@ -31,8 +32,7 @@ For the battery-power, I am using 18650 Li-Ion battery with TP4056 battery charg
 The battery-power is Power-ORed with the USB-power, through a 1n4007 diode (schottky diode is recommended to reduce the voltage-drop), and this is possible because the RPI-Pico board already has a schottky diode between the Vbus and Vsys pins.
 Thus, using the connections in the attached schematic, the device can charge the battery when usb power is available and also switch back to battery power when the usb is unplugged and both MIDI connection and power/ battery charging can be done through the same RPI-Pico's usb port.
 
-For the drum-pads, I used 1-inch piezo disks, to which gnd and signal wires are soldered, then hot-glue is added to protect the connection and the disks are mounted on 4inch x 4inch electrical box using double-sided tapes.
-On the top-side I glued some foam circles. The finished construction can be viewed on the YouTube demo.
+For the drum-pads, I used 1-inch piezo disks, to which gnd and signal wires are soldered, then hot-glue is added to protect the connection and the disks are mounted on 4inch x 4inch electrical box using double-sided tapes. On the top-side of the piezo-disks, I glued some foam circles. The finished construction can be viewed on the YouTube demo.
 
 The sensitivity and the thresholds for each drum-pad can be set in the following lines of code.py. The file can be easily modified in any text editor.
 
