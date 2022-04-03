@@ -1,6 +1,7 @@
 # DIY-Portable-Electronic-MIDI-Drum-Pads-with-built-in-sounds
 DIY portable velocity-sensitive electronic Drum-pad for finger drumming
 
+
 # Project Description:
 
 In this repository, I am sharing the code, schematic and general build and usage guidelines for a portable velocity-sensitive electronic Drum-pad for finger-drumming, which can play drum (or technically any audio) samples loaded by the user and also act as usb-midi input device.
@@ -10,6 +11,13 @@ I am glad to inform that all of these criteria is satisfied by the current proje
 
 
 # Demo available on YouTube: https://youtu.be/JEltvYWzZDU
+
+
+# NOTE/ Warning: Issues observed with the current design:
+1. 	When I am using battery power, I can hear a high-pitched whine/ noise in the headphones (when nothing is playing). Which is most-likely some kind of switching noise from the RPI-Pico's power management IC. My hypothesis is that battery voltage is ~3.7V, and 1N4007 drop is ~0.7, so ~3.0V is arriving at the Vsys of the PICO and the power management IC is boosting the voltage to 3.3V, and thus introducing the switching noise in the process. This issue maybe reolved by using a Schottky diode instead of the 1n4007 which I am currently using. Even with the above mentioned issue (which is not present when using USB power), the drum-pad is usable as the whine is generally drowned by the drum sample playback, but many people may find it annoying and the noise can cause issues with PAs in live scenarios.
+The solution for now is to stick to USB power, or try using a schottky diode in place of the 1N4007.
+
+2. 	During my testing, although I could definitely hear the difference between a hard and soft strike on the drum-pads, the consistency (and the range) of the velocity sensitivity is not even close to the professional grade equipments. Please consider the same before investing time in this project. Possible solutions can be: improvement in the algorithm, better setting of the thresholds and one can also try removing the 10nF capacitors in parallel with the 1meg resistors and 3.3v zener diodes.  
 
 
 # Build details:
@@ -80,11 +88,3 @@ https://docs.circuitpython.org/en/latest/shared-bindings/displayio/index.html
 https://docs.circuitpython.org/en/latest/shared-bindings/audiomixer/index.html
 https://docs.circuitpython.org/en/latest/shared-bindings/sdcardio/index.html
 https://docs.circuitpython.org/en/latest/shared-bindings/audiocore/index.html#audiocore.RawSample
-
-
-
-# NOTE/ Warning: One Issue is observed with the current circuit:
-For some reason, when I am using battery power, I am getting a high-pitched whine/ noise in the headphones (when nothing is playing). Which is most-likely some kind of switching noise from the RPI-Pico's power management IC.
-My hypothesis is that battery voltage is ~3.7V, and 1N4007 drop is ~0.7, so ~3.0V is arriving at the Vsys of the PICO and the power management IC is boosting the voltage to 3.3V, and thus introducing the switching noise in the process. This issue maybe reolved by using a Schottky diode instead of the 1n4007 which I am currently using.
-Even with the above mentioned issue (which is not present when using USB power), the drum-pad is usable as the whine is generally drowned by the drum sample playback, but many people may find it annoying and the noise can cause issues with PAs in live scenarios.
-The solution for now is to stick to USB power, or try using a schottky diode in place of the 1N4007.
