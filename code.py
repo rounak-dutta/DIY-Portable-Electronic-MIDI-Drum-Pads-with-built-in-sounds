@@ -81,8 +81,8 @@ def scanDrumPads():
 wavData1 = audiocore.WaveFile(open("/SAMPLES/001_Kick1.wav", "rb"))
 wavData2 = audiocore.WaveFile(open("/SAMPLES/002_Snare1.wav", "rb"))
 wavData3 = audiocore.WaveFile(open("/SAMPLES/003_Snare2.wav", "rb"))
-wavData4 = audiocore.WaveFile(open("/SAMPLES/004_CHH1.wav", "rb"))
-wavData5 = audiocore.WaveFile(open("/SAMPLES/005_OHH1.wav", "rb"))
+wavData4 = audiocore.WaveFile(open("/SAMPLES/004_CHH2.wav", "rb"))
+wavData5 = audiocore.WaveFile(open("/SAMPLES/005_OHH2.wav", "rb"))
 wavData6 = audiocore.WaveFile(open("/SAMPLES/006_FTom1.wav", "rb"))
 wavData7 = audiocore.WaveFile(open("/SAMPLES/007_Ride1.wav", "rb"))
 wavData8 = audiocore.WaveFile(open("/SAMPLES/008_Crash1.wav", "rb"))
@@ -105,13 +105,13 @@ dac.play(mixer)
 
 # Settings for the Drum Pads
 # Floor-Tom, Ride-Cymbal, Crash-Cymbal, Snare-1, Snare-2, Kick-Drum, Closed-HiHat, Open-HiHat
-hitRecoverCountMax = [100, 100, 100, 100, 100, 75, 100, 100]
+hitRecoverCountMax = [100, 100, 100, 100, 100, 100, 100, 100]
 hitRecoverCount = [0, 0, 0, 0, 0, 0, 0, 0]
 wavDataList = [wavData6, wavData7, wavData8, wavData2, wavData3, wavData1, wavData4, wavData5]
 
 # Pad Thresholds and Max-values (range: 0 to 65536)
 thrList = [15000, 15000, 15000, 15000, 15000, 15000, 15000, 15000]
-maxList = [50000, 50000, 40000, 55000, 35000, 45000, 40000, 45000]
+maxList = [50000, 50000, 40000, 35000, 45000, 35000, 50000, 50000]
 
 
 # Midi-Info.:
@@ -134,9 +134,9 @@ while True:
             # then play the audion and send midi data
             if drumHits[i] > thrList[i]:
                 # Map the 16-bit velocity/ Analog value to 0-127 range
-                velocityVal = range_map(drumHits[i], 0, maxList[i], 0, 127)
-                # Cap the max-velocity to 120 and min to 20
-                if (velocityVal > 120):
+                velocityVal = range_map(drumHits[i], thrList[i], maxList[i], 35, 127)
+                # Cap the max-velocity to 125 and min to 20
+                if (velocityVal > 125):
                     velocityVal = 127
                 elif (velocityVal < 20):
                     velocityVal = 0
